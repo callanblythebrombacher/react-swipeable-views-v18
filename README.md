@@ -5,6 +5,11 @@
 
 SwipeableViews is a React component that provides swipeable views with touch support. It allows you to create a swipeable container with multiple views that can be navigated by swiping or using buttons.
 
+## Comming soon!
+
+1. Auto swipe with timer
+2. typescript
+
 ## Installation
 
 Install the package from npm:
@@ -120,4 +125,6 @@ Contributions are welcome! If you find a bug or want to suggest an enhancement, 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 ```
 
-Feel free
+Feel free to use and modify this template for your own projects. If you have any questions or suggestions, please open an issue or submit a pull request.
+
+ 
