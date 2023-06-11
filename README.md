@@ -16,7 +16,7 @@ npm install react-swipeable-views-v18
 or
 
 ```
-yarn add react-swipeable-views
+yarn add react-swipeable-views-v18
 ```
 
 ## Usage
