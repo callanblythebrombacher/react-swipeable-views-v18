@@ -1,70 +1,123 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SwipeableViews for React V18
 
-## Available Scripts
+### Please note this package is not type script compatible yet... 
 
-In the project directory, you can run:
+SwipeableViews is a React component that provides swipeable views with touch support. It allows you to create a swipeable container with multiple views that can be navigated by swiping or using buttons.
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install the package from npm:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+npm install react-swipeable-views-v18
+```
 
-### `npm test`
+or
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn add react-swipeable-views
+```
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```jsx
+import React, { useRef } from 'react';
+import SwipeableViews from 'react-swipeable-views';
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const App = () => {
+  const swipeableViewsRef = useRef(null);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  const handleSwipeForward = () => {
+    swipeableViewsRef.current.swipeForward();
+  };
 
-### `npm run eject`
+  const handleSwipeBackward = () => {
+    swipeableViewsRef.current.swipeBackward();
+  };
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  const handleResetPosition = () => {
+    swipeableViewsRef.current.resetPosition();
+  };
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  return (
+    <div>
+      <SwipeableViews ref={swipeableViewsRef}>
+        <div>View 1</div>
+        <div>View 2</div>
+        <div>View 3</div>
+      </SwipeableViews>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+      <button onClick={handleSwipeBackward}>Swipe Backward</button>
+      <button onClick={handleSwipeForward}>Swipe Forward</button>
+      <button onClick={handleResetPosition}>Reset Position</button>
+    </div>
+  );
+};
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export default App;
+```
 
-## Learn More
+### Props
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The `SwipeableViews` component accepts the following props:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `children`: The child components that represent the swipeable views.
 
-### Code Splitting
+### Imperative Handler
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To access the swipe functions (`swipeForward`, `swipeBackward`, `resetPosition`) outside the component, you can use the `ref` attribute and the imperative handler.
 
-### Analyzing the Bundle Size
+```jsx
+const swipeableViewsRef = useRef(null);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+const handleSwipeForward = () => {
+  swipeableViewsRef.current.swipeForward();
+};
 
-### Making a Progressive Web App
+const handleSwipeBackward = () => {
+  swipeableViewsRef.current.swipeBackward();
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+const handleResetPosition = () => {
+  swipeableViewsRef.current.resetPosition();
+};
 
-### Advanced Configuration
+return (
+  <div>
+    <SwipeableViews ref={swipeableViewsRef}>
+      {/* Your views */}
+    </SwipeableViews>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    <button onClick={handleSwipeBackward}>Swipe Backward</button>
+    <button onClick={handleSwipeForward}>Swipe Forward</button>
+    <button onClick={handleResetPosition}>Reset Position</button>
+  </div>
+);
+```
 
-### Deployment
+This allows you to programmatically trigger swipe actions or reset the position of the swipeable views.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Customization
 
-### `npm run build` fails to minify
+You can customize the appearance and behavior of the SwipeableViews component by modifying the CSS classes or adding inline styles. The component uses the following CSS classes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `swipeable-container`: The container element that wraps the swipeable views.
+- `slider-container`: The container for the views that is translated to achieve the swipe effect.
+- `slide`: The individual view elements.
+- `pagination`: The pagination dots for navigating between views.
+- `dot`: The individual dot element representing a view in the pagination.
+- `dot.active`: The active dot element indicating the current view.
+
+You can override these classes or provide additional styles to achieve the desired look and feel.
+
+## Contributing
+
+Contributions are welcome! If you find a bug or want to suggest an enhancement, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+```
+
+Feel free
