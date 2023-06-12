@@ -1,6 +1,6 @@
 {
   "name": "react-swipeable-views-v18",
-  "version": "1.1.21",
+  "version": "1.1.24",
   "description": "A replacement for react swipeable views for react 18",
   "main": "dist/react-swipeable-views-v18.js",
   "types": "@types/index.d.ts",

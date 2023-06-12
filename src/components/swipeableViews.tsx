@@ -34,13 +34,15 @@ const SwipeableViews = forwardRef(
     (props: SwipeableViewsProps, ref: Ref<SwipeableViewsRef>) => {
         const [activeIndex, setActiveIndex] = useState<number>(0);
         const [startX, setStartX] = useState<number>(0);
-        const [loopEnabled, setLoopEnabled] = useState<boolean>(props.loop);
+        const [autoSwipeEnabled, setAutoSwipeEnabled] = useState<boolean>(
+            props.autoSwipe
+        );
         const containerRef = useRef<HTMLDivElement>(null);
         const dragThreshold = props.swipeThreshold || 50; // Adjust the drag threshold using props
 
         const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
             setStartX(event.clientX);
-            setLoopEnabled(false); // Disable looping while swiping
+            setAutoSwipeEnabled(false); // Disable looping while swiping
         };
 
         const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -74,7 +76,7 @@ const SwipeableViews = forwardRef(
         const handleMouseLeave = () => {
             resetPosition();
             setStartX(0);
-            setLoopEnabled(true); // Enable looping after leaving the container
+            setAutoSwipeEnabled(true); // Enable looping after leaving the container
         };
 
         const swipeForward = () => {
@@ -82,7 +84,7 @@ const SwipeableViews = forwardRef(
 
             if (
                 newIndex >= React.Children.count(props.children) &&
-                loopEnabled
+                props.loop
             ) {
                 setActiveIndex(0);
             } else if (newIndex < React.Children.count(props.children)) {
@@ -109,7 +111,7 @@ const SwipeableViews = forwardRef(
         };
 
         const startAutoSwipe = () => {
-            if (props.autoSwipe) {
+            if (autoSwipeEnabled) {
                 setTimeout(() => {
                     swipeForward();
                 }, props.autoSwipeInterval);
@@ -166,7 +168,7 @@ const SwipeableViews = forwardRef(
                 backButtonProps && !props.hideBackButton
                     ? renderButton(
                           () => {
-                              setLoopEnabled(false);
+                              setAutoSwipeEnabled(false);
                               swipeBackward();
                           },
                           activeIndex === 0,
@@ -178,7 +180,7 @@ const SwipeableViews = forwardRef(
                 forwardButtonProps && !props.hideForwardButton
                     ? renderButton(
                           () => {
-                              setLoopEnabled(false);
+                              setAutoSwipeEnabled(false);
                               swipeForward();
                           },
                           activeIndex ===
