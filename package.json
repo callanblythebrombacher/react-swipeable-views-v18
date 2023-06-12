@@ -1,6 +1,6 @@
 {
   "name": "react-swipeable-views-v18",
-  "version": "1.0.42",
+  "version": "1.1.21",
   "description": "A replacement for react swipeable views for react 18",
   "main": "dist/react-swipeable-views-v18.js",
   "types": "@types/index.d.ts",
@@ -15,7 +15,7 @@
   "scripts": {
     "build": "rimraf dist && webpack --mode production",
     "start": "webpack serve --mode development",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm version patch --no-git-tag-version"
   },
   "keywords": [
     "react",
