@@ -2,14 +2,14 @@ const path = require('path');
 
 module.exports = {
     mode: 'production',
-    entry: path.resolve(__dirname, 'src/index.js'),
+    entry: path.resolve(__dirname, 'src/index.tsx'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'react-swipeable-views-v18.js',
         library: 'react-swipeable-views-v18',
         libraryTarget: 'umd',
         umdNamedDefine: true,
-        globalObject: 'typeof self !== \'undefined\' ? self : this', // Added line for Next.js compatibility
+        globalObject: 'typeof self !== \'undefined\' ? self : this',
     },
     externals: {
         react: {
@@ -28,12 +28,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
                     },
                 },
             },
@@ -44,6 +44,6 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'], // Add TypeScript extensions
     },
 };

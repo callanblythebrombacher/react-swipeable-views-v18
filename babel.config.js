@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
     presets: [
         [
@@ -11,9 +9,10 @@ module.exports = {
             },
         ],
         '@babel/preset-react',
+        '@babel/preset-typescript', // Add TypeScript preset
     ],
     plugins: [
-        "@babel/plugin-syntax-jsx",
-        "babel-plugin-inline-import-graphql-ast"
-    ]
+        '@babel/plugin-syntax-jsx',
+        'babel-plugin-inline-import-graphql-ast',
+    ],
 };

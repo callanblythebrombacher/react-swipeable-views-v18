@@ -1,130 +1,75 @@
+# React Swipeable Views v18
 
-# SwipeableViews for React V18
-
-### Please note this package is not type script compatible yet... 
-
-SwipeableViews is a React component that provides swipeable views with touch support. It allows you to create a swipeable container with multiple views that can be navigated by swiping or using buttons.
-
-## Comming soon!
-
-1. Auto swipe with timer
-2. typescript
+A replacement for react swipeable views for React 18.
 
 ## Installation
 
-Install the package from npm:
-
-```
+```bash
 npm install react-swipeable-views-v18
-```
-
-or
-
-```
-yarn add react-swipeable-views-v18
 ```
 
 ## Usage
 
 ```jsx
-import React, { useRef } from 'react';
-import SwipeableViews from 'react-swipeable-views';
+import React from 'react';
+import SwipeableViews from 'react-swipeable-views-v18';
 
 const App = () => {
-  const swipeableViewsRef = useRef(null);
-
-  const handleSwipeForward = () => {
-    swipeableViewsRef.current.swipeForward();
-  };
-
-  const handleSwipeBackward = () => {
-    swipeableViewsRef.current.swipeBackward();
-  };
-
-  const handleResetPosition = () => {
-    swipeableViewsRef.current.resetPosition();
-  };
-
   return (
-    <div>
-      <SwipeableViews ref={swipeableViewsRef}>
-        <div>View 1</div>
-        <div>View 2</div>
-        <div>View 3</div>
-      </SwipeableViews>
-
-      <button onClick={handleSwipeBackward}>Swipe Backward</button>
-      <button onClick={handleSwipeForward}>Swipe Forward</button>
-      <button onClick={handleResetPosition}>Reset Position</button>
-    </div>
+    <SwipeableViews>
+      <div>Slide 1</div>
+      <div>Slide 2</div>
+      <div>Slide 3</div>
+    </SwipeableViews>
   );
 };
 
 export default App;
 ```
 
-### Props
+## Features
 
-The `SwipeableViews` component accepts the following props:
+- Swipeable views for React 18.
+- Auto-swipe feature with customizable interval.
+- Manual navigation with forward and backward buttons.
+- Customizable button text.
+- Adjustable swipe threshold.
+- Looping behavior for infinite swiping.
 
-- `children`: The child components that represent the swipeable views.
+## Props
 
-### Imperative Handler
+| Prop                  | Type     | Default | Description                                     |
+| --------------------- | -------- | ------- | ----------------------------------------------- |
+| autoSwipe             | boolean  | false   | Enable or disable auto-swipe feature.            |
+| autoSwipeInterval     | number   | 3000    | Auto-swipe interval in milliseconds.             |
+| backButtonProps       | object   |         | Props for the backward button.                   |
+| forwardButtonProps    | object   |         | Props for the forward button.                    |
+| swipeThreshold        | number   | 50      | Drag threshold for swipe action.                 |
+| loop                  | boolean  | true    | Enable or disable looping behavior.              |
+| hideBackButton        | boolean  | false   | Hide the backward button.                        |
+| hideForwardButton     | boolean  | false   | Hide the forward button.                         |
 
-To access the swipe functions (`swipeForward`, `swipeBackward`, `resetPosition`) outside the component, you can use the `ref` attribute and the imperative handler.
+### `backButtonProps`
 
-```jsx
-const swipeableViewsRef = useRef(null);
+| Prop     | Type     | Default | Description                          |
+| -------- | -------- | ------- | ------------------------------------ |
+| text     | string   | 'Back'  | The text content of the back button.  |
+| disabled | boolean  | false   | Disable the back button.              |
 
-const handleSwipeForward = () => {
-  swipeableViewsRef.current.swipeForward();
-};
+### `forwardButtonProps`
 
-const handleSwipeBackward = () => {
-  swipeableViewsRef.current.swipeBackward();
-};
-
-const handleResetPosition = () => {
-  swipeableViewsRef.current.resetPosition();
-};
-
-return (
-  <div>
-    <SwipeableViews ref={swipeableViewsRef}>
-      {/* Your views */}
-    </SwipeableViews>
-
-    <button onClick={handleSwipeBackward}>Swipe Backward</button>
-    <button onClick={handleSwipeForward}>Swipe Forward</button>
-    <button onClick={handleResetPosition}>Reset Position</button>
-  </div>
-);
-```
-
-This allows you to programmatically trigger swipe actions or reset the position of the swipeable views.
-
-## Customization
-
-You can customize the appearance and behavior of the SwipeableViews component by modifying the CSS classes or adding inline styles. The component uses the following CSS classes:
-
-- `swipeable-container`: The container element that wraps the swipeable views.
-- `slider-container`: The container for the views that is translated to achieve the swipe effect.
-- `slide`: The individual view elements.
-- `pagination`: The pagination dots for navigating between views.
-- `dot`: The individual dot element representing a view in the pagination.
-- `dot.active`: The active dot element indicating the current view.
-
-You can override these classes or provide additional styles to achieve the desired look and feel.
+| Prop     | Type     | Default | Description                               |
+| -------- | -------- | ------- | ----------------------------------------- |
+| text     | string   | 'Next'  | The text content of the forward button.    |
+| disabled | boolean  | false   | Disable the forward button.                |
 
 ## Contributing
 
-Contributions are welcome! If you find a bug or want to suggest an enhancement, please open an issue or submit a pull request.
+Contributions are welcome! Please submit a pull request or open an issue for any improvements or bug fixes.
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License.
 ```
 
-Feel free to use and modify this template for your own projects. If you have any questions or suggestions, please open an issue or submit a pull request.
-
- 
+Feel free to request any adjustments to the code by submiiting an issue on github or a pull request.
