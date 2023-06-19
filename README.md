@@ -12,7 +12,7 @@ npm install react-swipeable-views-v18
 
 ```jsx
 import React, { useRef } from 'react';
-import SwipeableViews from 'react-swipeable-views';
+import {SwipeableViews} from 'react-swipeable-views';
 
 const App = () => {
   const swipeableViewsRef = useRef(null);
@@ -100,7 +100,7 @@ You can customize the appearance and behavior of the SwipeableViews component by
 - `.buttons-container > button:disabled:after`: The text content of the disabled forward and backward buttons.
 - `.buttons-container > button:active:after`: The text content of the active forward and backward buttons.
 
-```css
+
 You can override these classes or provide additional styles to achieve the desired look and feel.
 
 ## Contributing
